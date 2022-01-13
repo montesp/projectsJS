@@ -5,22 +5,74 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Figuras Geometricas</title>
+    <link rel="stylesheet" href="./css/figuras.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <h1>
-            Figuras geometricass
-        </h1>
+    <header class="header">
+        <div class="title-container">
+            <img src="./assets/icons/icons8-diversidad-50.png" alt="">
+            <h1>Figuras geometricas</h1>
+            <img src="./assets/icons/icons8-diversidad-50.png" alt="">
+        </div>
     </header>
-    <section>
-        <h2>Calcula el area y perimetro de un cuadrado</h2>
-        <form action="#">
-            <label for="InputCuadrado">Escribe cuanto mide cada lado de tu cuadrado</label>
-            <input id="InputCuadrado" type="number" >
-            <button type="button" onclick="calcularPerimetroCuadrado()">Calcular el perimetro</button>
-            <button type="button" onclick="calcularAreaCuadrada()">Calcular el area</button>
-        </form>
-    </section>
+    <main>
+        <section class="figure-container">
+            <h2>Cuadrado</h2>
+            <form action="#" class="form-square">
+                <p>Ingresa un lado del cuadrado</p>
+                <div class="input-container">
+                    <label for="InputCuadrado">Lado</label>
+                    <input id="InputCuadrado" type="number" >
+                </div>
+                <div class="button-container">
+                    <button type="button" onclick="calcularPerimetroCuadrado()">Calcular perimetro</button>
+                    <button type="button" onclick="calcularAreaCuadrada()">Calcular area</button>
+                </div>
+                <p class="result" id="result">Resultado: </p>
+            </form>
+        </section>
+        <section class="figure-container">
+            <h2>Triangulo</h2>
+            <form action="#" class="form-square">
+                <p>Ingresa los 3 lados del circulo</p>
+                <div class="input-container">
+                    <label for="InputLado1Triangle">Lado1</label>
+                    <input id="InputLado1Triangle" type="number" >
+                    <label for="InputLado2Triangle">Lado2</label>
+                    <input id="InputLado2Triangle" type="number" >
+                </div>
+                <div class="input-container">
+                    <label for="InputBaseTriangle">Base</label>
+                    <input id="InputBaseTriangle" type="number" >
+                </div>
+                <div class="button-container">
+                    <button type="button" onclick="calcularPerimetroTriangular()">Calcular perimetro</button>
+                    <button type="button" onclick="calcularAreaTriangular()">Calcular area</button>
+                </div>
+                <p class="result" id="result">Resultado: </p>
+            </form>
+        </section>
+        <section class="figure-container">
+            <h2>Circulo</h2>
+            <form action="#" class="form-square">
+                <p>Ingresa el radio del circulo</p>
+                <div class="input-container">
+                    <label for="InputRadioCirculo">Radio</label>
+                    <input id="InputRadioCirculo" type="number" >
+                </div>
+                <div class="button-container">
+                    <button type="button" onclick="calcularPerimetroCircular()">Calcular perimetro</button>
+                    <button type="button" onclick="calcularAreaCircular()">Calcular area</button>
+                </div>
+                <p class="result" id="result">Resultado: </p>
+            </form>
+        </section>
+    </main>
+  
+    
 
     <script src="./js/figuras.js"></script>
 </body>
