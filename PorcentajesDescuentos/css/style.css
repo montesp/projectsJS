@@ -1,0 +1,115 @@
+:root{
+    --dark-blue:#2A6A99;
+    --light-blue:#2B96E3;
+    --dark-yellow:#E3992B;
+    --light-yellow:#FFB64A;
+    --white:#FFF8F3;
+    --black:#0D0632;
+    --blue-shadow:rgba(43,150,227,.2);
+}
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html{
+    font-size: 62.5%;
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--white);
+}
+
+body{
+    width: 100vw;
+    height: 100vh;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70px;
+    background-color: var(--dark-blue);
+}
+
+header h1 {
+    font-size: 2.4rem;
+    font-weight: 700;
+    line-height: 1.8rem;
+    color: var(--white);
+    
+}
+
+main {
+    display: flex;
+    justify-content: center;
+}
+
+.price-container {  
+    height: 270px;
+    width: 280px;
+    padding: 10px 20px;
+    margin: 10px;
+    border: 2px solid var(--light-blue);
+    border-radius: 10px 0;
+    box-shadow: 3px 4px var(--blue-shadow);
+}
+
+.price-container h2 {
+    margin-bottom: 10px;
+    font-size: 1.6rem;
+    font-weight: 500;
+    line-height: 1.8rem;
+    text-align: center;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.input-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 65%;
+    margin: 15px auto;
+}
+
+.input-container label {
+    align-self: center;
+    font-size: 1.4rem;
+}
+
+.input-container input {
+    height: 30px;
+    width: 70px;
+    margin-left: 10px;
+    padding-left: 5px;
+    border: 1px solid var(--light-blue);
+    border-radius: 4px;
+    outline: none;
+}
+
+.form-container button {
+    align-self: center;
+    width: 90px;
+    height: 35px;
+    margin-bottom: 10px;
+    border: .5px solid var(--dark-blue);
+    border-radius: 5px;
+    font-size: 1.4rem;
+    font-weight: 700;
+    background-color: var(--dark-blue);
+    color: var(--white);
+    outline: none;
+    box-shadow: 2px 3px var(--blue-shadow);
+}
+
+#priceP {
+    align-self: center;
+    font-size: 1.4rem;
+    font-weight: 500;
+}
+
