@@ -6,10 +6,22 @@ class Class {
         comentaries = [],
         teacher,
     }){
-        this.name = name;
-        this.duration = duration;
+        this._name = name;
+        this._duration = duration;
         this.comentaries = comentaries;
         this.teacher = teacher;
+    }
+
+    get name(){
+        return this._name;
+    }
+
+    set name(newName){
+        this._name = newName;
+    }
+
+    get duration(){
+        return this._duration;
     }
 }
 
@@ -72,10 +84,27 @@ class Course {
             classes = [],
         }
     ){
-        this.name = name;
+        this._name = name;
         this.classes = classes;
     }
+
+    get name(){
+        return this._name;
+    }
+
+    set name(newName){
+        if(newName === "Curso Malito de programacion Basica"){
+            console.error("Web... no");
+        }else{
+            this._name = newName;
+        }
+    }
+    // changeName(newName){
+    //     this._name = newName;
+    // }
 }
+
+
 
 const cursoDefinitvoHTML = new Course({
         name: 'Curso definitivo de HTML y CSS',
@@ -86,6 +115,9 @@ const cursoDefinitvoHTML = new Course({
         ],
     }
 );
+
+cursoDefinitvoHTML.name
+cursoDefinitvoHTML.name = "cambio"
 
 const cursoFrontDevoloper = new Course({
     name: "Curso de Frontend Developer",
@@ -103,8 +135,12 @@ class LearningPaths {
         name,
         courses = [],
     }) {
-        this.name = name;
+        this._name = name;
         this.courses = courses;
+    }
+
+    get name(){
+        return this._name;
     }
 }
 
