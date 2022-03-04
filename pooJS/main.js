@@ -1,3 +1,5 @@
+import { PlatziClass } from "./ecma6.mjs";
+
 //objetos literales
 const pavel = {
     name:'Pavel',
