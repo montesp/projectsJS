@@ -1,4 +1,24 @@
 //Crear todas las clases necesarias en Platzi
+class Comment {
+    constructor({
+        content,
+        studentName,
+        studentRole = "estudiante",
+    }){
+        this.content = content;
+        this.studentName = studentName;
+        this.studentRole = studentRole;
+        this.like = 0;
+    }
+
+    publicar(){
+        console.log(this.studentName + " (" + this.studentRole + ")");
+        console.log(this.like + " likes");
+        console.log(this.content);
+    }
+}
+
+
 class Class {
     constructor({
         name,
@@ -82,10 +102,14 @@ class Course {
         {
             name,
             classes = [],
+            isFree = false,
+            lang = "spaninsh"
         }
     ){
         this._name = name;
         this.classes = classes;
+        this.isFree = isFree;
+        this.lang = lang;
     }
 
     get name(){
@@ -113,11 +137,22 @@ const cursoDefinitvoHTML = new Course({
             backendClass,
             fullstackClass
         ],
+        isFree: true,
     }
 );
 
-cursoDefinitvoHTML.name
-cursoDefinitvoHTML.name = "cambio"
+const cursoJS = new Course({
+    name: 'Curso definitivo de HTML y CSS',
+    classes:[
+            frontendClass,
+            backendClass,
+            fullstackClass
+        ],
+    lang: "english",
+});
+
+// cursoDefinitvoHTML.name
+// cursoDefinitvoHTML.name = "cambio"
 
 const cursoFrontDevoloper = new Course({
     name: "Curso de Frontend Developer",
@@ -125,6 +160,7 @@ const cursoFrontDevoloper = new Course({
         htmlSemantico,
         especificad,
     ],
+    lang: "english",
 });
 
 
@@ -168,7 +204,86 @@ class Student {
         this.approvedCourses = approvedCourses;
         this.learningPaths = learningPaths;
     };
+
+    publicarComentario(commentContent){
+        const comment = new Comment({
+            content: commentContent,
+            studentName: this.name,
+
+        });
+
+        comment.publicar()
+    }
 }
+
+class FreeStudent  extends Student {
+    constructor(props){
+        super(props);
+
+    }
+
+    approveCourse(newCourse) {
+        if(newCourse.isFree){
+            this.approvedCourses.push(newCourse);
+
+        } else {
+            console.warn("Lo sentimos " + this.name + " solo puedes tomar cursos abiertos")
+        }
+    }
+}
+
+class BasicStudent extends Student {
+    constructor(props){
+        super(props);
+
+    }
+
+    approveCourse(newCourse) {
+        if(newCourse.lang !== "english"){
+            this.approvedCourses.push(newCourse);
+
+        } else {
+            console.warn("Lo sentimos " + this.name + " no puedes tomar cursos en ingles")
+        }
+    }
+}
+
+class ExpertStudent extends Student {
+    constructor(props){
+        super(props);
+
+    }
+
+    approveCourse(newCourse) {
+        this.approvedCourses.push(newCourse);
+
+    }
+}
+
+class TeacherStudent extends Student {
+    constructor(props){
+        super(props);
+
+    }
+
+    approveCourse(newCourse) {
+        this.approvedCourses.push(newCourse);
+
+    }
+
+    publicarComentario(commentContent){
+        const comment = new Comment({
+            content: commentContent,
+            studentName: this.name,
+            studentRole: "profesor",
+        });
+
+        comment.publicar()
+    }
+
+}
+
+
 
 
 
@@ -182,27 +297,7 @@ const desarrolloWeb = new LearningPaths({
     ],
 });
 
-// const diseñoGrafico = new LearningPaths({
-//     name: "Escuela de diseño grafico",
-//     career: "Diseño y UX",
-//     curses: [
-//         "Cursos de Illustrator",
-//         "Curso de Dibujo de retrato",
-//         "Curso de arte para personajes 2D"
-//     ],
-// });
-
-// const marketing = new LearningPaths({
-//     name: "Escuela de marketing digital",
-//     career: "Marketing",
-//     curses: [
-//         "Curso de introduccion al marketing digital",
-//         "Curso de community Manager",
-//         "Curso de marca personal",
-//     ]
-// });
-
-const carlos = new Student({
+const carlos = new ExpertStudent({
     name: "Carlos",
     username: "criptobro",
     email: "criptobro22@gmail.com",
@@ -211,6 +306,26 @@ const carlos = new Student({
         desarrolloWeb,
     ],
 });
+
+const yael = new BasicStudent({
+    name: "Yael",
+    username: "yaelhm",
+    email: "yael54@gmail.com",
+    instagram: "yh",
+    learningPaths: [
+        desarrolloWeb,
+    ],
+});
+
+const freddy = new TeacherStudent({
+    name: "Freddy",
+    username: "freddier",
+    email: "fredito@gmail.com",
+    instagram: "freddier",
+});
+
+// carlos.approveCourse(cursoJS);
+// yael.approveCourse(cursoJS);
 
 console.log(carlos);
 
