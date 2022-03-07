@@ -11,11 +11,16 @@ const pavel = {
 // console.log(Object.getOwnPropertyNames(pavel));
 // console.log(Object.entries(pavel));
 
-console.log(Object.getOwnPropertyDescriptors(pavel))
 
-Object.defineProperty(pavel, "pruebaNASA", {
-    value: "Extraterrestres",
-    writable: true,
-    enumerable: true,
-    configurable: true,
-})
+// Object.defineProperty(pavel, "pruebaNASA", {
+//     value: "Extraterrestres",
+//     writable: false,
+//     enumerable: false,
+//     configurable: false,
+// });
+
+Object.seal(pavel) // Hace que todas las propiedades configurable sea false  (Se eliminen)
+Object.freeze(pavel) // Hace que todas las propiedades writable sea false  (Se cambie los valores)
+
+
+console.log(Object.getOwnPropertyDescriptors(pavel));
