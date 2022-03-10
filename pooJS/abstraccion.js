@@ -41,21 +41,54 @@ function deepCopy(subject){
     return copySubject
 }
 
-const studentBase = {
-    name: undefined,
-    email: undefined,
-    age: undefined,
-    approvedCourses: undefined,
-    learningPaths: undefined,
-    socialMedia:{
-        twitter:undefined,
-        instragram: undefined,
-        facebook: undefined,
-    },
+// const studentBase = {
+//     name: undefined,
+//     email: undefined,
+//     age: undefined,
+//     approvedCourses: undefined,
+//     learningPaths: undefined,
+//     socialMedia:{
+//         twitter:undefined,
+//         instragram: undefined,
+//         facebook: undefined,
+//     },
+// };
+
+function requieredParam(param){
+    throw new Error(param + " este parametro es obligatorio");
+}
+
+function createStudents({
+    name = requieredParam("name"),
+    email = requieredParam("email"),
+    age,
+    twitter,
+    instagram,
+    facebook,
+    approvedCourses = [],
+    learningPaths = [],
+} = {}){
+    return{
+        name,
+        age,
+        email,
+        approvedCourses,
+        learningPaths,
+        sociaMedia:{
+            twitter,
+            instagram,
+            facebook,
+        },
+        
+    }
 };
 
-const pavel = deepCopy(studentBase);
-Object.seal(pavel);
-Object.freeze(pavel)
-// Object.isSealed(pavel);
-pavel.name = "Pavel";
+const pavel = createStudents({
+    name: "Pavel",
+    age: 18,
+    twitter: "montesp",
+    email: "montesp@gmail.com",
+    approvedCourses: ["HTML", "CSS"],
+    learningPaths: ["Escuela de web", "Escuela de frontend"]
+});
+
