@@ -69,22 +69,34 @@ function createStudents({
             instagram,
             facebook,
         },
-        readName() {
+        get name(){
             return private["_name"];
         },
-        changeName(newName) {
-            private["_name"] = newName;
-        },
-    };
-    Object.defineProperty(public, "readName", {
-        writable: false,
-        configurable: false,
-    });
+        set name(newName){
+            if(newName.length != 0){
+                private["_name"] = newName;
+            } else {
+                console.warn("Tu nombre debe tener al menos un caracter");
+            }
 
-    Object.defineProperty(public, "changeName", {
-        writable: false,
-        configurable: false,
-    });
+          
+        }
+        // readName() {
+        //     return private["_name"];
+        // },
+        // changeName(newName) {
+        //     private["_name"] = newName;
+        // },
+    };
+    // Object.defineProperty(public, "readName", {
+    //     writable: false,
+    //     configurable: false,
+    // });
+
+    // Object.defineProperty(public, "changeName", {
+    //     writable: false,
+    //     configurable: false,
+    // });
 
 
     return public;
@@ -100,3 +112,4 @@ const pavel = createStudents({
     learningPaths: ["Escuela de web", "Escuela de frontend"]
 });
 
+pavel.name = "pavelito";
