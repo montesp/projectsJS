@@ -45,6 +45,36 @@ function requieredParam(param){
     throw new Error(param + " este parametro es obligatorio");
 }
 
+function createLearningPaths({
+    name = requieredParam("name"),
+    courses = [],
+}){
+    const private = {
+        "_name": name,
+        "_courses": courses
+    };
+    const public = {
+        get name(){
+            return private["_name"];
+        },
+        set name(newName){
+            if(newName.length != 0){
+                private["_name"] = newName;
+            } else {
+                console.warn("Tu nombre debe tener al menos un caracter");
+            }
+
+        },
+        get courses(){
+            return private["_courses"];
+        },
+        
+
+    };
+
+    return public;
+}
+
 function createStudents({
     name = requieredParam("name"),
     email = requieredParam("email"),
@@ -57,13 +87,13 @@ function createStudents({
 } = {}){
 
     const private = {
-        "_name": name
+        "_name": name,
+        "_learningPaths": learningPaths,
     };
     const public = {
         age,
         email,
         approvedCourses,
-        learningPaths,
         sociaMedia:{
             twitter,
             instagram,
@@ -79,37 +109,50 @@ function createStudents({
                 console.warn("Tu nombre debe tener al menos un caracter");
             }
 
-          
-        }
-        // readName() {
-        //     return private["_name"];
-        // },
-        // changeName(newName) {
-        //     private["_name"] = newName;
-        // },
-    };
-    // Object.defineProperty(public, "readName", {
-    //     writable: false,
-    //     configurable: false,
-    // });
+        },
 
-    // Object.defineProperty(public, "changeName", {
-    //     writable: false,
-    //     configurable: false,
-    // });
+        get learningPaths(){
+            return private["_learningPaths"];
+        }, 
+        set learningPaths(newLP){
 
+            if(!newLP.name){
+                console.warn("Tu Lp no tiene la propiedad name");
+                return;
+            }
 
+            if(!newLP.courses){
+                console.warn("Tu Lp no tiene courses");
+                return;
+            }
+
+            if(! Object.isArray(newLP.courses)){
+                console.warn("Tu lp no es un lista de cursos");
+                return
+            }
+            
+            private["_learningPaths"] = newLP;
+
+        },
+    }
     return public;
     
 };
+Object.isArray
+
+
+// const pavel = createStudents({
+//     name: "Pavel",
+//     age: 18,
+//     twitter: "montesp",
+//     email: "montesp@gmail.com",
+//     approvedCourses: ["HTML", "CSS"],
+//     learningPaths: ["Escuela de web", "Escuela de frontend"]
+// });
 
 const pavel = createStudents({
     name: "Pavel",
-    age: 18,
-    twitter: "montesp",
     email: "montesp@gmail.com",
-    approvedCourses: ["HTML", "CSS"],
-    learningPaths: ["Escuela de web", "Escuela de frontend"]
 });
 
 pavel.name = "pavelito";
