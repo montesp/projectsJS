@@ -1,0 +1,19 @@
+{
+  "name": "projectsjs",
+  "version": "1.0.0",
+  "description": "learning Ecmascript",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/montesp/projectsJS.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/montesp/projectsJS/issues"
+  },
+  "homepage": "https://github.com/montesp/projectsJS#readme"
+}
