@@ -123,6 +123,7 @@ class Calculator {
     }
 }
 
+// const calc = new Calculator();
 const suma = Calculator.sumar(4, 7);
 console.log(suma);
 
@@ -131,3 +132,17 @@ import { hello } from './module';
 hello();
 
 //generators
+function* helloWorld(){
+    if(true){
+        yield 'Hello, ';
+    }
+    if(true){
+        yield 'World';
+    }    
+}
+
+const generatorHello = helloWorld();
+console.log(generatorHello.next().value);
+console.log(generatorHello.next().value);
+
+console.log(generatorHello.next().value);
