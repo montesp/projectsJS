@@ -1,0 +1,16 @@
+{
+  "name": "asynchronousjs",
+  "version": "1.0.0",
+  "description": "Working with asynchrony on JS",
+  "main": "src/index.js",
+  "scripts": {
+    "callback": "node src/callback/index.js"
+  },
+  "keywords": [
+    "callbacks",
+    "promise",
+    "async"
+  ],
+  "author": "montesp",
+  "license": "MIT"
+}
