@@ -1,5 +1,7 @@
-# My projects using JS
+# Topics I have already learned
 
-This project, contains my JS projects
-
-* Figures
+* Scope
+* Closures
+* OOP (Object oriented programming)
+* ES changes (Ecmascript)
+* Asynchronous JS
