@@ -1,0 +1,28 @@
+npm init para iniciar el proyecto
+npm init -y para saltarse varios pasos
+
+npm install <Package>
+npm i <package> -S son los paquetes que va a requerir nuestro proyecto
+
+npm install <Package> --save-dev Son los paquetes que se iran a produccion
+npm i <package> -D Lo mismo de arriba
+
+npm install -g <package> instalar un paquete global
+npm install <package> -O es un paquete
+
+npm install <package> --dry-run No es instalada pero es para ver el output del paquete
+npm instal <package> -force es para instalar desde la ultima version
+
+npm list    ver dependencias
+npm list -g --depth 0 ver paquetes globales
+
+Actualizar dependencias
+npm outdate para ver que paquetes estan desactualizados
+npm outdate -dd para ver un output mas detallado
+
+npm update actualiza los paquetes
+npm install <package>@latest para instalar la ultima version de un paquete
+
+Desistalar paquetes
+npm uninstall <package> elimina el paquete por completo
+npm uninstall <package> --no-save lo elimina pero lo deja en el package.json

@@ -1,0 +1,16 @@
+{
+  "name": "npmjs",
+  "version": "1.0.0",
+  "description": "Build package for node",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "javascript",
+    "node",
+    "package"
+  ],
+  "author": "Pavel Montes <pavelmontes22@gmail.com>",
+  "license": "MIT"
+}
