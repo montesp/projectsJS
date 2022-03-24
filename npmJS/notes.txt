@@ -26,3 +26,14 @@ npm install <package>@latest para instalar la ultima version de un paquete
 Desistalar paquetes
 npm uninstall <package> elimina el paquete por completo
 npm uninstall <package> --no-save lo elimina pero lo deja en el package.json
+
+npm audit revisa las vulnerabilidades que tiene nuestro proyecto
+npm audit fix arregla todas las vulnerabilidades que tiene nuestro programa
+
+snyk.io software que ayuda a que tengas dependencias actualizadas
+
+Paquetes propios
+sudo npm link trae los archvios de tu paquete como si lo instalaras desde los servidores de npm
+sudo npm install [ruta de nuestro proyecto] hace lo mismo que el de arriba
+
+npm version [patch/ major / minor] cambia la version de nuestro paquete depende de los cambios realizados en nuestro paquete
