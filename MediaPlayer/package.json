@@ -1,0 +1,19 @@
+{
+  "name": "mediaplayer",
+  "version": "1.0.0",
+  "description": "Media Player Example",
+  "main": "src/index.html",
+  "scripts": {
+    "test": "",
+    "start": "live-server"
+  },
+  "keywords": [
+    "javascript",
+    "npm"
+  ],
+  "author": "Pavel Montes <pavelmontes22@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "live-server": "^1.1.0"
+  }
+}
