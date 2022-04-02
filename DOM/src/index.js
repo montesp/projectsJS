@@ -1,11 +1,15 @@
-/**
- * This file is just a silly example to show everything working in the browser.
- * When you're ready to start on your site, clear the file. Happy hacking!
- **/
-
 const baseUrl = "https://platzi-avo.vercel.app";
 const appNode = document.querySelector('#app');
 
+// Web API Intl
+const formatPrice = price => {
+    const newPrice = new window.Intl.NumberFormat('en-EN', {
+        style: "currency",
+        currency: "USD",
+    }).format(price);
+
+    return newPrice;
+}
 // web api
 
 //Conectarse al server
@@ -31,7 +35,7 @@ window.fetch(`${baseUrl}/api/avo`)
 
         //Crear precio
         const price = document.createElement('p');
-        price.textContent = element.price;
+        price.textContent = formatPrice(element.price);
         price.className = 'price-card'
 
         const titleContainer = document.createElement('div')
