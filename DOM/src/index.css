@@ -9,14 +9,16 @@ body {
 .app {
     display: grid;
     grid-template-columns: repeat(2, minmax(200px, 1fr));
+    grid-template-rows: auto;
     gap: 30px;
+    height: 400px;
     margin-top: 20px;
 }
 
 .card-container {
     display: flex ;
     flex-direction: column;
-    border-radius: 10px;
+    border-radius: 30px;
     background-color:#afb42b ;
     box-shadow: 2px 3px 10px  rgba(175, 180, 43, 0.4);
 }
@@ -37,18 +39,31 @@ body {
 .price-card {
     width: 20%;
     margin-left: 10px;
-    font-size: 1.7rem;
+    margin-right: 10px;
+    border-radius: 60%;
+    font-size: 1.4rem;
     text-align: center;
+    color: white;
+    background-color: #5a5c0f;
 }
 
 .img-card {
     width: 80%;
-    height: 80%;
+    height: 70%;
     border-radius: 50%;
     margin: 10px auto 0;
 }
 
+.card-description {
+    font-size: 1.3rem;
+    height: 30%;
+    margin-top: 10px;
+    padding: 15px 20px 0;
+    border-radius: 5px 5px 30px 30px;
+    text-overflow: ellipsis;
 
-.carta {
-    font: 100;
+    overflow: auto;
+    box-shadow: 0 -5px  rgba(175, 180, 43, 0.4);;
+    color: white;
+    background-color: #5a5c0f;
 }

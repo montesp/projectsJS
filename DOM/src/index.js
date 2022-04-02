@@ -36,14 +36,19 @@ window.fetch(`${baseUrl}/api/avo`)
         //Crear precio
         const price = document.createElement('p');
         price.textContent = formatPrice(element.price);
-        price.className = 'price-card'
+        price.className = 'price-card';
+
+        const description = document.createElement('p');
+        description.textContent= element.attributes.description ;
+        description.className = 'card-description';
+        // console.log(element.attributes.description)
 
         const titleContainer = document.createElement('div')
         titleContainer.append(title, price)
         titleContainer.className = 'title-card-container'
 
         const container = document.createElement('div');
-        container.append(titleContainer , img);
+        container.append(titleContainer , img, description);
         container.className = 'card-container'
 
 
