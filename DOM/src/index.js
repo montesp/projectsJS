@@ -1,6 +1,13 @@
 const baseUrl = "https://platzi-avo.vercel.app";
 const appNode = document.querySelector('#app');
 
+appNode.addEventListener('click', (event) => {
+    if(event.target.nodeName === 'H2'){
+        window.alert("Hola bb, como has estado bb");
+    }
+
+});
+
 // Web API Intl
 const formatPrice = price => {
     const newPrice = new window.Intl.NumberFormat('en-EN', {
@@ -46,6 +53,9 @@ window.fetch(`${baseUrl}/api/avo`)
         const titleContainer = document.createElement('div')
         titleContainer.append(title, price)
         titleContainer.className = 'title-card-container'
+        // title.addEventListener('click', (event) => {
+        //     window.alert("Hola bb, como has estado bb");
+        // });
 
         const container = document.createElement('div');
         container.append(titleContainer , img, description);
