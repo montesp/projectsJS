@@ -43,3 +43,10 @@ console.log(responseFood);
 const responseFoodIndex = products.findIndex(item => item.id === '🥞');
 console.log(responseFoodIndex);
 
+function solution(numbers) {
+  return numbers.every(number => number % 2 === 0);
+};
+
+ console.log(solution([2, 4, 6, 8, 10]));
+ console.log(solution([1, 3, 5, 7, 10, 11]));
+ console.log(solution([1, 3, 5]));
