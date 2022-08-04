@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/montesp/projectsJS/issues"
   },
-  "homepage": "https://github.com/montesp/projectsJS#readme"
+  "homepage": "https://github.com/montesp/projectsJS#readme",
+  "dependencies": {
+    "node-fetch": "^3.2.10"
+  }
 }
