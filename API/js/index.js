@@ -6,14 +6,12 @@ button.addEventListener('click', () => {
 })
 
 async function getDogImage(url){
-    await fetch(url)
-    .then(response => response.json())
-    .then(data => {
-        const imageContainer  = document.getElementById("image-container");
-        console.log(imageContainer)
-        imageContainer.src = data[0].url;
-    });
+    const res = await fetch(url);
+    const data = await res.json();
+    const imageContainer  = await document.getElementById("image-container");
+    console.log(imageContainer)
+    imageContainer.src = data[0].url;
+
 }
-//Un boton para recargar la imagen
-//Usar asyncs await
+
 getDogImage(URL);
