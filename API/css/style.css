@@ -41,7 +41,7 @@ body {
 .dog_image__container {
     width: 900px;
     height: 800px;
-    margin: 0 auto;
+    margin: 20px auto;
 }
 
 .dog_image__container img {
