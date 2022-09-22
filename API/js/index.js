@@ -1,4 +1,4 @@
-const URL = "https://api.thedogapi.com/v1/images/search?limit=3";
+const URL = "https://api.thedogapi.com/v1/images/search?limit=3&api_key=live_NFimpQ2CBVkNM9eRyX35O6KkYkF5lYTFBTR92SWrKDVXlblL7d4HXw1nHQ9YQwSm";
 const button = document.getElementById("button");
 
 

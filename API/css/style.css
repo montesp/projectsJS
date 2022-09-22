@@ -3,6 +3,7 @@
 :root {
     --white: #f7f8fb;
     --blue: #0d47a1;
+    --background: #002245;
 }
 
 * {
@@ -17,18 +18,29 @@ html {
 }
 
 body {
+    position: relative;
+    background-color: var(--background);
     font-size: 1.6rem;
     width: 100vw;
     height: 100vh;
 }
 
+.header {
+    width: 100%;
+    height: 80px;
+    border: 1px solid black;
+}
+
 .main {
+    /* background-color: var(--background); */
     display: flex;
     flex-direction: column;
     width: 50%;
     height: 100%;
-    margin: 0 auto;
+    margin: 0 auto 0;
 }
+
+.random_dogs__container
 
 .main__title {
     margin: 40px 0;
