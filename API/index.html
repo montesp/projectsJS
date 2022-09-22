@@ -9,16 +9,22 @@
 </head>
 <body>
     <header class="header">
-        <h1 class="landing-title">The dog api</h1>
+        <div class="title__container">
+            <h1 class="title">The dog API</h1>
+        </div>
         <nav class="nav__container">
             <ul>
-                <li><a href="#">Random Dogs</a></li>
-                <li><a href="#">Favorites</a></li>
+                <li class="nav__elements">
+                    <a href="#random-dogs">Random Dogs</a>
+                </li>
+                <li class="nav__elements">
+                    <a href="#favorite-dogs">Favorites</a>
+                </li>
             </ul>
         </nav>
     </header>
     <main class="main">
-        <section class="random_dogs__container">
+        <section class="random_dogs__container" id="random-dogs">
             <h3 class="main__title--random-dogs">Random Dogs</h3>
             <article>
                 <figure class="dog_image__container">
@@ -41,7 +47,7 @@
             </article>
             <button class="button" id="button">Cargar</button>
         </section>
-        <section class="favorites_dogs__container">
+        <section class="favorites_dogs__container" id="favorite-dogs">
             <h3 class="main__title--favorite-dogs">Favorite Dogs</h3>
             <figure class="dog_image__container">
                 <img id="image-container1"  alt="random dog image">
