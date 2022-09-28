@@ -1,5 +1,5 @@
 const API_URL_RANDOM = "https://api.thedogapi.com/v1/images/search?limit=6&api_key=live_NFimpQ2CBVkNM9eRyX35O6KkYkF5lYTFBTR92SWrKDVXlblL7d4HXw1nHQ9YQwSm";
-const API_URL_FAVORITES = "https://api.thedogapi.com/v1//favourites/?limit=2&api_key=live_NFimpQ2CBVkNM9eRyX35O6KkYkF5lYTFBTR92SWrKDVXlblL7d4HXw1nHQ9YQwSm";
+const API_URL_FAVOURITES = "https://api.thedogapi.com/v1/favourites/?limit=2&api_key=live_NFimpQ2CBVkNM9eRyX35O6KkYkF5lYTFBTR92SWrKDVXlblL7d4HXw1nHQ9YQwSm";
 
 const button = document.getElementById("button");
 const spanError = document.getElementById("error")
@@ -11,6 +11,10 @@ button.addEventListener('click', () => {
 async function getDogImages(url){
     const res = await fetch(url);
     const data = await res.json();
+
+    console.log(res)
+    console.log(data)
+
 
     if (res.status !== 200) {
         spanError.innerHTML = "Hubo error " + res.status;
@@ -34,11 +38,34 @@ async function getDogImages(url){
 async function getFavoritesDogImages(url){
     const res = await fetch(url);
     const data = await res.json();
+    console.log(res)
     console.log(data)
     if (res.status !== 200) {
         spanError.innerHTML = `Hubo error ${res.status} ${data.message}`
     }
 }
 
+async function saveFavouriteDog(){
+    const res = await fetch(API_URL_FAVOURITES ,{
+        method:'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            image_id: '"4yghDUdnE"'
+        }),
+    });
+
+    const data = await res.json();
+
+    console.log('save')
+    console.log(res)
+
+    if (res.status !== 200) {
+        spanError.innerHTML = `Hubo error ${res.status} ${data.message}`
+    }
+
+}
+
 getDogImages(API_URL_RANDOM);
-getFavoritesDogImages(API_URL_FAVORITES);
+getFavoritesDogImages(API_URL_FAVOURITES);
