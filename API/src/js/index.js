@@ -1,19 +1,16 @@
 
-const API_KEY = "?api_key=live_NFimpQ2CBVkNM9eRyX35O6KkYkF5lYTFBTR92SWrKDVXlblL7d4HXw1nHQ9YQwSm";
-const API_URL_RANDOM = "https://api.thedogapi.com/v1/images/search?limit=6&api_key=live_NFimpQ2CBVkNM9eRyX35O6KkYkF5lYTFBTR92SWrKDVXlblL7d4HXw1nHQ9YQwSm";
-const API_GET_IMAGE = "https://api.thedogapi.com/v1/images";
-
-const API_URL_FAVOURITES = "https://api.thedogapi.com/v1/favourites?api_key=live_NFimpQ2CBVkNM9eRyX35O6KkYkF5lYTFBTR92SWrKDVXlblL7d4HXw1nHQ9YQwSm";
+const API_KEY = 'api_key=live_NFimpQ2CBVkNM9eRyX35O6KkYkF5lYTFBTR92SWrKDVXlblL7d4HXw1nHQ9YQwSm';
+const API = 'https://api.thedogapi.com/v1';
+const API_URL_RANDOM = 'https://api.thedogapi.com/v1/images/search?limit=6&api_key=live_NFimpQ2CBVkNM9eRyX35O6KkYkF5lYTFBTR92SWrKDVXlblL7d4HXw1nHQ9YQwSm';
+const API_GET_IMAGE = 'https://api.thedogapi.com/v1/images';
+const API_URL_FAVOURITES = 'https://api.thedogapi.com/v1/favourites';
 
 const button = document.getElementById("button");
-const buttonSave1 = document.getElementById('')
 const spanError = document.getElementById("error")
 
 button.addEventListener('click', () => {
-    getDogImages(API_URL_RANDOM);
+    getDogImages(`${API}/images/search?limit=6/${API_KEY}`);
 })
-
-
 
 async function getDogImages(url) {
     const res = await fetch(url);
@@ -46,17 +43,17 @@ async function getDogImages(url) {
         imageContainer5.src = data[4].url;
         imageContainer6.src = data[5].url;
 
-        btn1.onclick = () => saveFavouriteDog(data[0].id);
-        btn2.onclick = () => saveFavouriteDog(data[1].id);
-        btn3.onclick = () => saveFavouriteDog(data[2].id);
-        btn4.onclick = () => saveFavouriteDog(data[3].id);
-        btn5.onclick = () => saveFavouriteDog(data[4].id);
-        btn6.onclick = () => saveFavouriteDog(data[5].id);
+        btn1.onclick = () => saveFavouriteDog(``,data[0].id);
+        btn2.onclick = () => saveFavouriteDog(``,data[1].id);
+        btn3.onclick = () => saveFavouriteDog(``,data[2].id);
+        btn4.onclick = () => saveFavouriteDog(``,data[3].id);
+        btn5.onclick = () => saveFavouriteDog(``,data[4].id);
+        btn6.onclick = () => saveFavouriteDog(``,data[5].id);
     }
 }
 
-async function getFavoritesDogImages() {
-    const res = await fetch(API_URL_FAVOURITES);
+async function getFavoritesDogImages(url) {
+    const res = await fetch(url);
     const data = await res.json();
     console.log(data)
 
@@ -88,8 +85,10 @@ async function getFavoritesDogImages() {
             dogImageContainer.className = "dog_image__container";
             button.className = "saved__button";
             buttonContainer.className = "button__container";
-
-
+            button.addEventListener('click', () => {
+                deleteFavouriteDog(dog.url)
+            })
+            
             button.appendChild(btnText);
             buttonContainer.appendChild(button);
             dogImageContainer.appendChild(image);
@@ -104,8 +103,8 @@ async function getFavoritesDogImages() {
     }
 }
 
-async function saveFavouriteDog(id) {
-    const res = await fetch(API_URL_FAVOURITES, {
+async function saveFavouriteDog(api, id) {
+    const res = await fetch(api, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -128,5 +127,18 @@ async function saveFavouriteDog(id) {
 
 }
 
-getDogImages(API_URL_RANDOM);
+async function deleteFavouriteDog(id){
+    const res = await fetch(`${API_URL_FAVOURITES}`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    });
+
+    const data = await res.json();
+
+
+}
+
+getDogImages(`${API}/images/search?limit=6/${API_KEY}`);
 getFavoritesDogImages();
