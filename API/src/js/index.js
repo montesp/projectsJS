@@ -1,18 +1,18 @@
 
 const API_KEY = 'api_key=live_NFimpQ2CBVkNM9eRyX35O6KkYkF5lYTFBTR92SWrKDVXlblL7d4HXw1nHQ9YQwSm';
 const API = 'https://api.thedogapi.com/v1';
-const API_URL_RANDOM = 'https://api.thedogapi.com/v1/images/search?limit=6&api_key=live_NFimpQ2CBVkNM9eRyX35O6KkYkF5lYTFBTR92SWrKDVXlblL7d4HXw1nHQ9YQwSm';
-const API_GET_IMAGE = 'https://api.thedogapi.com/v1/images';
-const API_URL_FAVOURITES = 'https://api.thedogapi.com/v1/favourites';
 
+// Boton para recargar las imagenes
 const button = document.getElementById("button");
 const spanError = document.getElementById("error")
 
+
 button.addEventListener('click', () => {
-    getDogImages(`${API}/images/search?limit=6/${API_KEY}`);
+    getDogImages(`${API}/images/search?limit=6&${API_KEY}`);
 })
 
 async function getDogImages(url) {
+    // console.log(url)
     const res = await fetch(url);
     const data = await res.json();
 
@@ -43,12 +43,12 @@ async function getDogImages(url) {
         imageContainer5.src = data[4].url;
         imageContainer6.src = data[5].url;
 
-        btn1.onclick = () => saveFavouriteDog(``,data[0].id);
-        btn2.onclick = () => saveFavouriteDog(``,data[1].id);
-        btn3.onclick = () => saveFavouriteDog(``,data[2].id);
-        btn4.onclick = () => saveFavouriteDog(``,data[3].id);
-        btn5.onclick = () => saveFavouriteDog(``,data[4].id);
-        btn6.onclick = () => saveFavouriteDog(``,data[5].id);
+        btn1.onclick = () => saveFavouriteDog(API,data[0].id);
+        btn2.onclick = () => saveFavouriteDog(API,data[1].id);
+        btn3.onclick = () => saveFavouriteDog(API,data[2].id);
+        btn4.onclick = () => saveFavouriteDog(API,data[3].id);
+        btn5.onclick = () => saveFavouriteDog(API,data[4].id);
+        btn6.onclick = () => saveFavouriteDog(API,data[5].id);
     }
 }
 
@@ -85,15 +85,16 @@ async function getFavoritesDogImages(url) {
             dogImageContainer.className = "dog_image__container";
             button.className = "saved__button";
             buttonContainer.className = "button__container";
+            // console.log(dog.id)
             button.addEventListener('click', () => {
-                deleteFavouriteDog(dog.url)
+                deleteFavouriteDog(dog.id)
             })
             
             button.appendChild(btnText);
             buttonContainer.appendChild(button);
             dogImageContainer.appendChild(image);
+
             image.src =  dog.image.url;
-            // console.log(dog.image_id)
             cardImageContainer.append(dogImageContainer, buttonContainer);
 
             render.push(cardImageContainer);
@@ -104,7 +105,7 @@ async function getFavoritesDogImages(url) {
 }
 
 async function saveFavouriteDog(api, id) {
-    const res = await fetch(api, {
+    const res = await fetch(`${api}/favourites?${API_KEY}`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -113,11 +114,7 @@ async function saveFavouriteDog(api, id) {
             image_id: id
         }),
     });
-
-    // Borrar estos elementos '"4yghDUdnE"'
-
     const data = await res.json();
-
     console.log('save')
     console.log(res)
 
@@ -128,7 +125,7 @@ async function saveFavouriteDog(api, id) {
 }
 
 async function deleteFavouriteDog(id){
-    const res = await fetch(`${API_URL_FAVOURITES}`, {
+    const res = await fetch(`${API_URL_FAVOURITES}/${id}?${API_KEY}`, {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json',
@@ -140,5 +137,6 @@ async function deleteFavouriteDog(id){
 
 }
 
-getDogImages(`${API}/images/search?limit=6/${API_KEY}`);
-getFavoritesDogImages();
+getDogImages(`${API}/images/search?limit=6&${API_KEY}`);
+getFavoritesDogImages(`${API}/favourites?${API_KEY}`);
+// https://api.thedogapi.com/v1/favourites
