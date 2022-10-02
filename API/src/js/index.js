@@ -2,6 +2,7 @@
 const API_KEY = 'api_key=live_NFimpQ2CBVkNM9eRyX35O6KkYkF5lYTFBTR92SWrKDVXlblL7d4HXw1nHQ9YQwSm';
 const API = 'https://api.thedogapi.com/v1';
 
+
 // Boton para recargar las imagenes
 const button = document.getElementById("button");
 const spanError = document.getElementById("error")
@@ -125,7 +126,7 @@ async function saveFavouriteDog(api, id) {
 }
 
 async function deleteFavouriteDog(id){
-    const res = await fetch(`${API_URL_FAVOURITES}/${id}?${API_KEY}`, {
+    const res = await fetch(`${API}/favourites/${id}?${API_KEY}`, {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json',
@@ -133,6 +134,9 @@ async function deleteFavouriteDog(id){
     });
 
     const data = await res.json();
+    if(res.status === 200){
+        console.log("Eliminado con exito")
+    }
 
 
 }
