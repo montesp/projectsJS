@@ -1,5 +1,4 @@
-
-const API_KEY = 'api_key=live_NFimpQ2CBVkNM9eRyX35O6KkYkF5lYTFBTR92SWrKDVXlblL7d4HXw1nHQ9YQwSm';
+const KEY = 'live_NFimpQ2CBVkNM9eRyX35O6KkYkF5lYTFBTR92SWrKDVXlblL7d4HXw1nHQ9YQwSm';
 const API = 'https://api.thedogapi.com/v1';
 
 
@@ -9,7 +8,7 @@ const spanError = document.getElementById("error")
 
 
 button.addEventListener('click', () => {
-    getDogImages(`${API}/images/search?limit=6&${API_KEY}`);
+    getDogImages(`${API}/images/search?limit=6&`);
 })
 
 async function getDogImages(url) {
@@ -54,7 +53,12 @@ async function getDogImages(url) {
 }
 
 async function getFavoritesDogImages(url) {
-    const res = await fetch(url);
+    const res = await fetch(url, {
+        method: 'GET',
+        headers: {
+            'X-API-KEY': KEY
+        }
+    });
     const data = await res.json();
     console.log(data)
 
@@ -106,10 +110,11 @@ async function getFavoritesDogImages(url) {
 }
 
 async function saveFavouriteDog(api, id) {
-    const res = await fetch(`${api}/favourites?${API_KEY}`, {
+    const res = await fetch(`${api}/favourites?`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
+            'X-API-KEY': KEY,
         },
         body: JSON.stringify({
             image_id: id
@@ -122,20 +127,23 @@ async function saveFavouriteDog(api, id) {
         spanError.innerHTML = `Hubo error ${res.status} ${data.message}`
     } else {
         console.log("Se ha guardado el perro con exito!");
-        getFavoritesDogImages(`${API}/favourites?${API_KEY}`);
+        getFavoritesDogImages(`${API}/favourites?`);
     }
 
 }
 
 async function deleteFavouriteDog(id){
-    const res = await fetch(`${API}/favourites/${id}?${API_KEY}`, {
+    const res = await fetch(`${API}/favourites/${id}?`, {
         method: 'DELETE',
+        headers: {
+            'X-API-KEY': KEY
+        }
     });
 
     const data = await res.json();
     if(res.status === 200){
         console.log("Eliminado con exito");
-        getFavoritesDogImages(`${API}/favourites?${API_KEY}`);
+        getFavoritesDogImages(`${API}/favourites?`);
     } else {
         console.error('NO se pudo eliminar');
     }
@@ -143,5 +151,5 @@ async function deleteFavouriteDog(id){
 
 }
 
-getDogImages(`${API}/images/search?limit=6&${API_KEY}`);
-getFavoritesDogImages(`${API}/favourites?${API_KEY}`);
+getDogImages(`${API}/images/search?limit=6&`);
+getFavoritesDogImages(`${API}/favourites?`);
