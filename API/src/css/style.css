@@ -98,6 +98,29 @@ body {
     text-align: center;
 }
 
+.uploading_dog__container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 500px;
+    margin-bottom: 30px;
+}
+
+.uploading-dog__title {
+    width: 70%;
+    margin: 30px auto;
+    text-align: center;
+    font-size: 4.3rem;
+}
+
+.form__container {
+    display: flex;
+    justify-content: center;
+    width: 50%;
+    margin: 0 auto;
+}
+
+
 
 .dogs__container {
     display: grid;
@@ -192,3 +215,6 @@ body {
     outline: 1px solid var(--white);
     /* box-shadow: 3px 3px 5px 0 rgba(0, 0, 0, .4); */
 }
+
+
+
