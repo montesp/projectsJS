@@ -66,7 +66,7 @@ async function getFavoritesDogImages(url) {
     } else {
         const render = [];
         const section = document.getElementById('favorite-dogs');
-
+        section.innerHTML = "";
 
         data.forEach( dog => {
             // Article
@@ -116,11 +116,13 @@ async function saveFavouriteDog(api, id) {
         }),
     });
     const data = await res.json();
-    console.log('save')
-    console.log(res)
+
 
     if (res.status !== 200) {
         spanError.innerHTML = `Hubo error ${res.status} ${data.message}`
+    } else {
+        console.log("Se ha guardado el perro con exito!");
+        getFavoritesDogImages(`${API}/favourites?${API_KEY}`);
     }
 
 }
@@ -128,14 +130,14 @@ async function saveFavouriteDog(api, id) {
 async function deleteFavouriteDog(id){
     const res = await fetch(`${API}/favourites/${id}?${API_KEY}`, {
         method: 'DELETE',
-        headers: {
-            'Content-Type': 'application/json',
-        },
     });
 
     const data = await res.json();
     if(res.status === 200){
-        console.log("Eliminado con exito")
+        console.log("Eliminado con exito");
+        getFavoritesDogImages(`${API}/favourites?${API_KEY}`);
+    } else {
+        console.error('NO se pudo eliminar');
     }
 
 
@@ -143,4 +145,3 @@ async function deleteFavouriteDog(id){
 
 getDogImages(`${API}/images/search?limit=6&${API_KEY}`);
 getFavoritesDogImages(`${API}/favourites?${API_KEY}`);
-// https://api.thedogapi.com/v1/favourites
