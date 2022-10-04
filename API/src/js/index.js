@@ -151,5 +151,37 @@ async function deleteFavouriteDog(id){
 
 }
 
+async function uploadDogPhoto(api){
+    const form = document.getElementById('uploading-form');
+    const formData = new FormData(form);
+
+    console.log(formData.get('file'));
+    const res = await fetch(api, {
+        method: 'POST',
+        headers: {
+            // 'Content-Type': 'multipart/form-data',
+            'X-API-KEY': KEY
+
+        },
+        body: formData,
+    });
+    const data = await res.json()
+
+    if (res.status !== 201) {
+        console.error(`Hubo un error al subir el perrito: ${res.status} ${data.message}`);
+    }
+    else {
+        console.log("Foto de perrito cargada :)");
+        console.log({ data });
+        console.log(data.url);
+        saveFavouriteDog(API, data.id);
+    }
+}
+
+const uploadingPhotoButton =  document.getElementById('upload-dog-photo')
+uploadingPhotoButton.addEventListener('click', () => {
+    uploadDogPhoto(`${API}/images/upload`)
+})
+
 getDogImages(`${API}/images/search?limit=6&`);
 getFavoritesDogImages(`${API}/favourites?`);
