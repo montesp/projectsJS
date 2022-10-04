@@ -183,5 +183,13 @@ uploadingPhotoButton.addEventListener('click', () => {
     uploadDogPhoto(`${API}/images/upload`)
 })
 
+const loadFile = function(event) {
+    var output = document.getElementById('output');
+    output.src = URL.createObjectURL(event.target.files[0]);
+    output.onload = function() {
+      URL.revokeObjectURL(output.src) // free memory
+    }
+  };
+
 getDogImages(`${API}/images/search?limit=6&`);
 getFavoritesDogImages(`${API}/favourites?`);

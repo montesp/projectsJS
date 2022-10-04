@@ -92,8 +92,12 @@
         <section id="uploading-dog-container" class="uploading_dog__container" >
             <h2 class="uploading-dog__title">Sube la foto de tu perrito</h2>
             <form class="form__container" id="uploading-form">
-                <input type="file" id="file" name="file">
-                <button type="button" id="upload-dog-photo">Subir foto de perrito</button>
+                <div class="preview__container">
+                    <input type="file" id="file" name="file" onchange="loadFile(event)">
+                    <img  id="output">
+                </div>
+
+                <button type="button" id="upload-dog-photo" class="upload-photo__button">Subir foto de perrito</button>
             </form>
         </section>
         <h3 class="main__title--favorite-dogs">Favorite Dogs</h3>
