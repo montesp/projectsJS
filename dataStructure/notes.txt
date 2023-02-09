@@ -1,0 +1,19 @@
+## Arrays
+
+Son una coleccion de informacion. 
+A los array en otros lenguajes se les conoce como listas. 
+Un array genera un indice de la informacion que estamos guardando.
+
+En Javascript existen los siguientes metodos que permiten manipular 
+los arrays.
+
+Existen los arrays dinamicos y estaticos. Los estaticos son los que 
+tienen tu tamaño ya definido, al contrario que los dinamicos que pueden 
+crecer. En javascript genera el doble del tamaño el cual es asignado 
+iniciamente, es decir si tengo 3 valores iniciales, asignara 6 espacios 
+en memoria, si se llenan los 6 espacios y se quiere un 7mo valor.
+En lugar de asignar 7 espacios, copiara los 6 primeros elementos y 
+creara un nuevo array con 12 espacios, el cual es el doble del tamaño 
+deseado. Y asi consecutivamente cuando se quieran asignar mas valores 
+al array.
+
