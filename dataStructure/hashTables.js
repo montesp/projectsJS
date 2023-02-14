@@ -20,6 +20,7 @@ class HashTable {
   }
   search(key){
     const address = this.hashMethod(key);
+    // console.log(address);
     const currentBucket = this.data[address];
 
     if(currentBucket) {
@@ -31,6 +32,39 @@ class HashTable {
     }
     return undefined;
   }
+  delete(key){
+    const address = this.hashMethod(key);
+    const currentBucket = this.data[address];
+    const data = [];
+    if (currentBucket){
+      for (let i = 0; i < currentBucket.length; i++) {
+        if(currentBucket[i][0] !== key) {
+          data.push(currentBucket[i]);
+      }
+    }
+    if(data === []){
+      this.data[address] = undefined;
+    } else {
+      this.data[address] = data;
+    }
+
+    return this.data;
+    }
+  }
+
+  getAllKeys(){
+    keys = [];
+    for (let i = 0; i < this.data.length; i++) {
+      if(this.data[i]){
+        // console.log(this.data[i]);
+
+        for (let j = 0; j < this.data[i].length; j++) {
+          keys.push(this.data[i][j][0])
+        }
+      }
+    }
+    return keys;
+  }
 }
 
-const myHashTable = new HashTable(50);
+const myHashTable = new HashTable(5);
