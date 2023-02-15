@@ -88,6 +88,7 @@ class MySinglyLinkedList {
       return this;
     }
   }
+  
 }
 
 let myLinkedList = new MySinglyLinkedList(1);
