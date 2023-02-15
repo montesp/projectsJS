@@ -74,6 +74,20 @@ class MySinglyLinkedList {
 
     return currentNode;
   }
+
+  remove(index){
+    if(index < 0 || index >= this.length) {
+      return "El index es incorrecto, intenta un nuevo index";
+    } else {
+      const prevNode = this._getIndex(index-1);
+      // const currentNode = this._getIndex(index);
+      // prevNode.next = currentNode.next;
+      prevNode.next = prevNode.next.next;
+
+      this.length--;
+      return this;
+    }
+  }
 }
 
 let myLinkedList = new MySinglyLinkedList(1);
