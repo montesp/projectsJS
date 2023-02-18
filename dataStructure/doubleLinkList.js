@@ -39,6 +39,31 @@ class MyDoublyLinkedList {
 
   insert(index, value) {
     //insert
+    if(index <= 0 && index >= this.length ) return "El index es incorrecto, ingresa un index nuevo";
+    if(index === this.length - 1 ) {
+      this.append(value);
+      this.length++;
+      return this;
+    }
+    if(index === 0) {
+      this.prepend(value);
+      this.length++;
+      return this;
+    }
+
+    const newNode = new Node(value);
+    const prevNode =  this._getIndex(index - 1);
+    const nextNode = prevNode.next;
+
+    newNode.prev = prevNode;
+    newNode.next = nextNode;
+    prevNode.next = newNode;
+    nextNode.prev = newNode;
+
+    this.length++;
+
+
+    return this;
   }
 
   _getIndex(index){
