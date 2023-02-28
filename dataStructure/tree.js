@@ -36,9 +36,18 @@ class Tree {
     }
   }
 
-  search(){
-
-  }
+  search(value) {
+    let currentNode = this.root
+    while (currentNode && currentNode.value != value) {
+        if (value < currentNode.value) {
+            currentNode = currentNode.left
+        } else if (value > currentNode.value) {
+            currentNode = currentNode.right
+        }
+    }
+    if (!currentNode) return false
+    return currentNode
+}
 
   delete(){
 
