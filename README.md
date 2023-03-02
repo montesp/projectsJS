@@ -7,4 +7,4 @@
 * Asynchronous JS
 * DOM Manipulation
 * Array Manipulation Methods
-* Data structure (learning) ----
+* Data structure
